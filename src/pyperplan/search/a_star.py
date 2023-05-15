@@ -87,16 +87,19 @@ def ordered_node_greedy_best_first(node, h, node_tiebreaker):
     return (f, h, node_tiebreaker, node)
 
 
-def greedy_best_first_search(task, heuristic, use_relaxed_plan=False):
+def greedy_best_first_search(task, heuristic, max_search_time, use_relaxed_plan=False):
     """
     Searches for a plan in the given task using greedy best first search.
 
     @param task The task to be solved.
     @param heuristic A heuristic callable which computes the estimated steps
                      from a search node to reach the goal.
+    @param use_relaxed_plan: relaxed plan?
+    @param max_search_time: max search time
     """
     return astar_search(
-        task, heuristic, ordered_node_greedy_best_first, use_relaxed_plan
+        task, heuristic, ordered_node_greedy_best_first, use_relaxed_plan,
+        max_search_time=max_search_time
     )
 
 
